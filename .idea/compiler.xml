@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="org.autorefactor.feature" />
+        <module name="org.autorefactor.plugin" />
+        <module name="org.autorefactor.plugin.tests" />
+        <module name="org.autorefactor.repository" />
+        <module name="org.autorefactor.rules.samples" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="org.autorefactor.feature" target="1.5" />
+      <module name="org.autorefactor.plugin" target="1.5" />
+      <module name="org.autorefactor.plugin.tests" target="1.5" />
+      <module name="org.autorefactor.repository" target="1.5" />
+      <module name="org.autorefactor.rules.samples" target="1.7" />
+      <module name="parent" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

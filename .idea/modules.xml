@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/feature/org.autorefactor.feature.iml" filepath="$PROJECT_DIR$/feature/org.autorefactor.feature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin/org.autorefactor.plugin.iml" filepath="$PROJECT_DIR$/plugin/org.autorefactor.plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin.tests/org.autorefactor.plugin.tests.iml" filepath="$PROJECT_DIR$/plugin.tests/org.autorefactor.plugin.tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repository/org.autorefactor.repository.iml" filepath="$PROJECT_DIR$/repository/org.autorefactor.repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/samples/org.autorefactor.rules.samples.iml" filepath="$PROJECT_DIR$/samples/org.autorefactor.rules.samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+    </modules>
+  </component>
+</project>

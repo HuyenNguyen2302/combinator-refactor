@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--
+ ! AutoRefactor - Eclipse plugin to automatically refactor Java code bases.
+ !
+ ! Copyright (C) 2013-2015 Jean-Noël Rouvignac - initial API and implementation
+ !
+ ! This program is free software: you can redistribute it and/or modify
+ ! it under the terms of the GNU General Public License as published by
+ ! the Free Software Foundation, either version 3 of the License, or
+ ! any later version.
+ !
+ ! This program is distributed in the hope that it will be useful,
+ ! but WITHOUT ANY WARRANTY; without even the implied warranty of
+ ! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ! GNU General Public License for more details.
+ !
+ ! You should have received a copy of the GNU General Public License
+ ! along with this program under LICENSE-GNUGPL.  If not, see
+ ! <http://www.gnu.org/licenses/>.
+ !
+ !
+ ! All rights reserved. This program and the accompanying materials
+ ! are made available under the terms of the Eclipse Public License v1.0
+ ! which accompanies this distribution under LICENSE-ECLIPSE, and is
+ ! available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<html lang="en">
+  <head>
+    <title>Automatically refactor entire code bases!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="refactoring, refactor, automatic, automatically, automated, java, modernize">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      body {
+        font-size: 16px;
+      }
+    </style>
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script');
+        var t = document.getElementsByTagName('script')[0];
+
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
+
+        t.parentNode.insertBefore(s, t);
+    })();
+    /* ]]> */
+    </script>
+  </head>
+  <body>
+    <h1>AutoRefactor</h1>
+    <h2>About</h2>
+    <p>The AutoRefactor project delivers free software that automatically refactor code bases.</p>
+    <p>The aim is to fix language/API usage in order to deliver smaller, more maintainable and more expressive code bases.</p>
+    <p>The first software will be an Eclipse plugin to automatically refactor Java code bases. License will be dual licensed under EPLv1.0 and GPLv3+.</p>
+    <h2>Why?</h2>
+After years working in different large code bases, I (Jean-No&euml;l Rouvignac) got tired of spending too much time applying the same code cleanups again and again.
+In addition, tools like <a href="http://www.sonarqube.org">SonarQube&trade;</a> (providing their own Java analyzer and also supporting the aggregation of <a href="http://findbugs.sourceforge.net">FindBugs&trade;</a>, <a href="http://checkstyle.sourceforge.net">Checkstyle</a> and <a href="http://pmd.sourceforge.net">PMD</a>) are fantastic, but they do not not help fix the thousand warnings you can find in legacy code bases.
+    <p>
+I decided I had spent too much time on manually doing these changes, so I tried using <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>. They work great for some code transforms, but can only do so much: they do not understand the language semantics, reapplying them again and again consumes time, they sometimes fail to execute due to too much complexity. I then sought for better and libre solutions, but found none. This is when I started AutoRefactor.
+    </p>
+    <p><a href="http://en.wikipedia.org/wiki/Software_rot">Software rots</a>, particularly if the developers in charge do not care enough. Software has to be nurtured like a <a href="http://www.chrisaitchison.com/2011/05/03/you-are-not-a-software-engineer">garden</a>. Other causes for software rot are:
+      <ul>
+        <li>developers lack of knowledge of the language in use and its features/idioms</li>
+        <li>developers habits coming from other languages (Any C programmers around?)</li>
+        <li>new language features get added, but the code base lags behind</li>
+        <li>incomplete automatic changes are applied</li>
+        <li>short deadlines, lack of investment in the software, lack of stakeholder support for reducing the technical debt</li>
+      </ul>
+    </p>
+    <h2>Goals</h2>
+    <ul>
+      <li>Easier maintenance</li>
+      <li>Modernized code base</li>
+      <li>Leaner and more compact code base</li>
+      <li>Performance improvements</li>
+    </ul>
+    <h2>Features</h2>
+Look at the <a href="html/samples.html">samples</a> showcasing each refactorings available in AutoRefactor.<br>
+The samples are extracted from the unit tests suite.
+    <h2>Usage</h2>
+      There are several ways to use AutoRefactor:
+      <ul>
+        <li>Open a Java file, then type <code>Shift+Alt+Y</code> to automatically refactor the code</li>
+        <li>In the package explorer, you can also select one or several Java files, packages or Java projects and type <code>Shift+Alt+Y</code>. The AutoRefactor plugin will apply the refactorings to all the selected Java files, or to the Java files located under the selected packages or under the Java projects.</li>
+      </ul>
+      Alternatively, you can open a Java file, or select one or several files, packages or Java project, then right-click > <code>AutoRefactor</code>, then:
+      <ul>
+        <li><code>Automatic refactoring</code> will automatically refactor the code</li>
+        <li><code>Choose refactorings...</code> will allow to choose which refactorings to automatically apply</li>
+      </ul>
+      You can see which changes have been applied in the "<a href="http://wiki.eclipse.org/EGit/User_Guide#Git_Perspective_and_Views">Git Perspective</a>" (git) or the "<a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-115.htm&cp=0_3_16_2">Team Synchronizing</a>" perspective (CVS, Subversion).
+      You can also see which changes have been applied by looking at individual files <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2FgettingStarted%2Fqs-55.htm">Local history</a>, and comparing the last revision with the previous revision.
+      <h3>Best practices</h3>
+      <p>Developers are responsible for what they commit.</p>
+      <p>
+        Since <em><a href="https://homes.cs.washington.edu/~mernst/advice/version-control.html">each commit should have a single purpose</a></em>, it is recommended to <u>separate</u> code refactorings from features/bug fixes, and commit them separately from each other. See Martin Fowler's <a href="http://martinfowler.com/articles/workflowsOfRefactoring/#preparatory">Preparatory refactoring</a> from <a href="http://martinfowler.com/articles/workflowsOfRefactoring">Workflows of Refactoring</a>.
+      </p>
+      <h4>How to do mass refactorings?</h4>
+      <p>
+        The suggested approach is to run only one refactoring rule at a time to do single purpose commits. Once the refactoring rule has finished running, do a pre-commit code review to check all the changes are approved by the developer. Commit the change, then move on to run the next refactoring rule and start the same process until all rules have been applied and all the changes have been committed.<br>
+        From now on, a developer can run the whole suite of refactorings without being overwhelmed by all the changes to review.
+      </p>
+    <h2>News</h2>
+      <h3>2015-03-23 - v1.0.0 is out!</h3>
+      <p>Many refactoring rules based on pattern matching are part of the release. Give it a try!</p>
+    <h2>Install</h2>
+      <h4>From the Eclipse marketplace</h4>
+      <p>Drag to your running Eclipse workspace to install AutoRefactor: <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2254782" class="drag" title="Drag to your running Eclipse workspace to install AutoRefactor"><img src="https://marketplace.eclipse.org/sites/all/themes/solstice/_themes/solstice_marketplace/public/images/btn-install.png" alt="Drag to your running Eclipse workspace to install AutoRefactor" style="vertical-align: middle;"/></a>
+      </p>
+      <h4>From AutoRefactor update site</h4>
+      <h5>stable release</h5>
+      <ul>
+        <li>Go to <code>Menu</code> > <code>Help</code> > <code>Install New Software...</code></li>
+        <li>Click the <code>Add...</code> button on the right</li>
+        <li>Enter "<em>AutoRefactor Releases</em>" in the <code>Name</code> field</li>
+        <li>Enter "<em><a href="http://autorefactor.org/releases/">http://autorefactor.org/releases/</a></em>" in the <code>Location</code> field</li>
+        <li>Select <code>Programming Languages</code> > <code>AutoRefactor</code></li>
+        <li>Click the <code>Next ></code> button at the bottom</li>
+        <li>Click the <code>Next ></code> button at the bottom</li>
+        <li>Accept the terms of the license agreement</li>
+        <li>Click the <code>Finish</code> button at the bottom.</li>
+      </ul>
+      <h5>nightly (maybe unstable)</h5>
+      <p>For more adventurous users, nightlies (potentially unstable) are available at "<em><a href="http://autorefactor.org/nightly/">http://autorefactor.org/nightly/</a></em>".</p>
+    <h2>Contribute</h2>
+How to <a href="https://github.com/JnRouvignac/AutoRefactor/blob/master/CONTRIBUTING.md">Contribute</a>
+    <h2>Support</h2>
+      <p>Please support this project if it was useful to you. 
+        Consider the alternative: how much would it cost you to manually fix all the code?</p>
+      <p>Ideas:
+        <ul>
+          <li>Donate the amount of technical debt you saved by using AutoRefactor,</li>
+          <li>Donate 1$ per 10 lines of code removed,</li>
+          <li>...</li>
+        </ul>
+      </p>
+      <p>Please contact me if you would like to sponsor a feature.</p>
+      <div>
+        <iframe src="http://api.flattr.com/button/view/?uid=JnRouvignac&amp;category=text&amp;url=http%3A%2F%2Fautorefactor.org&amp;title=AutoRefactor.org&amp;tags=automatic%2Crefactor%2Cjava&amp;" class="FlattrButton" width="55" height="62" frameborder="0" scrolling="no" title="Flattr" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>
+        &nbsp;
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display:inline">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="5F5ZLNNTVQF8Q">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </div>
+    <h2>Community</h2>
+      <ul>
+        <li>Contribute refactoring ideas</li>
+        <li>Test new refactorings on mature code bases</li>
+      </ul>
+    <h3>Developers corner</h3>
+    <h4>Easy hacks</h4>
+    <ul>
+      <li>Contribute new refactorings</li>
+    </ul>
+    <h4>Ideas</h4>
+      <ul>
+        <li>Turn refactorings into proper <a href="http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Freference%2Fextension-points%2Findex.html">Eclipse extension points</a>: <a href="http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Fguide%2Fjdt_api_contributing_a_cleanup.htm">cleanups, save actions</a> or quick fixes</li>
+        <li><a href="https://github.com/JnRouvignac/AutoRefactor/issues">Pick an issue on GitHub</a></li>
+        <li>Develop automatic refactoring for other languages:
+          <ul>
+            <li>C/C++ via the <a href="http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.cdt.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fcdt%2Fcore%2Fdom%2Fast%2Fpackage-summary.html">Eclipse CDT DOM</a> or via <a href="http://clang.llvm.org/">clang</a>
+              <ul>
+                <li>Note: <a href="http://llvm.org/">LLVM</a> project provides <a href="http://clang.llvm.org/extra/clang-modernize.html">clang-modernize</a> to refactor codebases to use modern constructs allowed by the much improved <a href="http://en.wikipedia.org/wiki/C%2B%2B11">C++11</a> and <a href="http://clang.llvm.org/extra/clang-tidy.html">clang-tidy</a> to detect and fix issues in C++ code bases.</li>
+              </ul>
+            </li>
+            <li>C# via the <a href="http://tomassetti.me/getting-started-roslyncommet34">Roslyn</a> APIs</li>
+            <li>PHP via the <a href="http://eclipsesourcecode.appspot.com/jsrcs/org.eclipse.php.internal.core.compiler.ast.nodes.package.html">Eclipse PDT DOM</a></li>
+            <li>JavaScript via the <a href="http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.wst.jsdt.doc%2Freference%2Fapi%2Forg%2Feclipse%2Fwst%2Fjsdt%2Fcore%2Fpackage-summary.html">Eclipse JSDT DOM</a></li>
+            <li>Go like <a href="http://golang.org/cmd/go/#hdr-Run_go_tool_fix_on_packages"><code>gofix</code></a></li>
+            <li>Python via the <a href="https://docs.python.org/3.4/library/ast.html#ast.NodeTransformer"><code>ast.NodeTransformer</code></a> class</li>
+          </ul>
+      </ul>
+    <h2>Links</h2>
+    <h4>Tools</h4>
+      <ul>
+        <li><a href="http://www.eclipse.org/jdt/">Eclipse Java development tools (JDT)</a>, the base for this plugin</li>
+        <li><a href="http://www.ucdetector.org/">UCDetector: Unnecessary Code Detector</a>, eclipse plugin that finds unnecessary (dead) public java code; suggests to the reduce visibility of methods, fields, classes; and make fields final. It offers to fix the reported issues in a batch mode.</li>
+        <li><a href="http://findbugs.sourceforge.net">FindBugs&trade;</a> and <a href="http://fb-contrib.sourceforge.net">fb-contrib&trade;</a>, bytecode-based software flaw finder for Java programs</li>
+        <li><a href="http://checkstyle.sourceforge.net">Checkstyle</a>, coding conventions checker for Java programs</li>
+        <li><a href="http://pmd.sourceforge.net">PMD</a>, source-based software flaw finder for Java programs</li>
+        <li><a href="http://www.sonarqube.org">SonarQube&trade;</a> provides its own Java static analyzer and also support the aggregation of the results of the precedent three software in a unified and coherent interface. It adds code coverage measurement and computes a lot of useful source code metrics. It is very useful for managing the health of source code and technical debt.</li>
+        <li><a href="http://walkmod.com/">walkmod</a>, a tool for Java source code that share common goals with AutoRefactor
+        <li><a href="http://coccinelle.lip6.fr/">Coccinelle</a>, a fantastic source of inspiration for automated source-to-source transformations
+          <ul><li><a href="https://github.com/facebook/pfff">Pfff</a>, a continuation of Coccinelle that can be used with several languages</ul>
+        </li>
+      </ul>
+    <h4>Library</h4>
+      Find here several books inspiring everyday how and why this plugin is written:
+      <ul>
+        <li>The book <cite>Refactoring: Improving the Design of Existing Code</cite> by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts and <a href="http://www.refactoring.com/">refactoring.com</a>, its companion website</li>
+        <li>The book <cite>Design Patterns: Elements of Reusable Object-Oriented Software</cite> by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides</li>
+        <li>The quote <blockquote>Programming is the art of telling another human being what one wants the computer to do.</blockquote> by Donald Knuth</li>
+<!-- Uncle Bob http://www.cleancoders.com/ and the book "Clean Code: A Handbook of Agile Software Craftsmanship" by ROBERT C. MARTIN
+<a href="http://blog.bbv.ch/2013/06/05/clean-code-cheat-sheet/">Clean code cheat sheet</a> -->
+<!--
+<a href="http://www.cs.helsinki.fi/u/luontola/tdd-2009/ext/ObjectCalisthenics.pdf>Jeff Bay's chapter</a> in <a href="http://www.amazon.com/The-Thoughtworks-Anthology-Technology-Programmers/dp/193435614X">The Thoughtworks Anthology: Essays on Software Technology and Innovation</a>
+<a href="http://www.slideshare.net/rdohms/bettercode-phpbenelux212alternate">Your code sucks, let's fix it! Object Calisthenics and Code readability</a>
+<a href="http://williamdurand.fr/2013/06/03/object-calisthenics/">Object Calisthenics</a>
+<a href="http://www.infoq.com/articles/natural-course-refactoring">Natural Course of Refactoring – a Refactoring Workflow</a>, by Mariusz Sieraczkiewicz, 30 November 2014
+<a href="http://martinfowler.com/articles/refactoring-external-service.html">Refactoring code that accesses external services</a>, by Martin Fowler, 17 February 2015
+-->
+      </ul>
+    <h6>Trademarks</h6>
+Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
+    <p>
+      <img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="Creative Commons Attribution-ShareAlike 3.0 logo"> This website is (C) 2013-2014 The AutoRefactor project and is licensed under the terms of the <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0</a>
+    </p>
+  </body>
+</html>

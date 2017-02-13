@@ -1,0 +1,89 @@
+digraph LabelsSample {
+label="LabelsSample";
+
+Entry -> _31_20
+_31_20 -> _32_13
+_31_20 -> _52_13
+_32_13 -> _31_20
+_32_13 -> _33_17
+_33_17 -> _34_21 [label="true"];
+_33_17 -> _36_17 [label="false"];
+_34_21 -> _52_13
+_36_17 -> _37_21 [label="true"];
+_36_17 -> _39_17 [label="false"];
+_37_21 -> _31_20
+_39_17 -> _40_21 [label="true"];
+_39_17 -> _42_17 [label="false"];
+_40_21 -> _31_20
+_42_17 -> _43_21 [label="true"];
+_42_17 -> _45_17 [label="false"];
+_43_21 -> _32_13
+_45_17 -> _32_13 [label="false"];
+_45_17 -> _46_21 [label="true"];
+_46_21 -> Exit
+_52_13 -> _53_13
+_53_13 -> _54_17 [label="true"];
+_53_13 -> _56_13 [label="false"];
+_54_17 -> Exit
+_56_13 -> _57_13
+_57_13 -> _58_17 [label="true"];
+_57_13 -> _60_13 [label="false"];
+_58_17 -> Exit
+_60_13 -> Exit
+
+subgraph cluster_1155_public_void_sample_String___strings_boolean_b1_boolean_b2_boolean_b3__ {
+label="public void sample(String[] strings,boolean b1,boolean b2,boolean b3){";
+Entry [style="filled" fillcolor="red"   fontcolor="white"];
+_52_13 [label="int i=0;\n(52,13)"];
+_56_13 [label="i++;\n(56,13)"];
+_60_13 [label="i++;\n(60,13)"];
+Exit  [style="filled" fillcolor="black" fontcolor="white"];
+
+subgraph cluster_1249_for__String_s___strings___ {
+label="for (String s : strings) {";
+_31_20 [label="for (String s : strings) {\n(31,20)"];
+
+subgraph cluster_1288_for__String_s2___strings___ {
+label="for (String s2 : strings) {";
+_32_13 [label="for (String s2 : strings) {\n(32,13)"];
+
+subgraph cluster_1332_if__b1____b2____b3___ {
+label="if (b1 && b2 && b3) {";
+_33_17 [label="if (b1 && b2 && b3) {\n(33,17)",shape="triangle"];
+_34_21 [label="break outerLoop;\n(34,21)"];
+}
+subgraph cluster_1425_if__b1____b2___ {
+label="if (b1 && b2) {";
+_36_17 [label="if (b1 && b2) {\n(36,17)",shape="triangle"];
+_37_21 [label="continue outerLoop;\n(37,21)"];
+}
+subgraph cluster_1515_if__b1___ {
+label="if (b1) {";
+_39_17 [label="if (b1) {\n(39,17)",shape="triangle"];
+_40_21 [label="break;\n(40,21)"];
+}
+subgraph cluster_1586_if__b2___ {
+label="if (b2) {";
+_42_17 [label="if (b2) {\n(42,17)",shape="triangle"];
+_43_21 [label="continue;\n(43,21)"];
+}
+subgraph cluster_1660_if__b3___ {
+label="if (b3) {";
+_45_17 [label="if (b3) {\n(45,17)",shape="triangle"];
+_46_21 [label="return;\n(46,21)"];
+}
+}
+}
+subgraph cluster_1801_if__b1___ {
+label="if (b1) {";
+_53_13 [label="if (b1) {\n(53,13)",shape="triangle"];
+_54_17 [label="break disguisedGoto;\n(54,17)"];
+}
+subgraph cluster_1891_if__b2___ {
+label="if (b2) {";
+_57_13 [label="if (b2) {\n(57,13)",shape="triangle"];
+_58_17 [label="return;\n(58,17)"];
+}
+}
+}
+
