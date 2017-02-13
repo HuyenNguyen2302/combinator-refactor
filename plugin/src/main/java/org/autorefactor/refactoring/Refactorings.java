@@ -303,7 +303,7 @@ public class Refactorings {
         if (toRemove.getLength() == 0) {
             throw new IllegalArgumentException("Cannot remove an empty source range: " + toRemove);
         }
-        hasRefactorings = true;
+        hasRefactorings = true; 
         sourceRewriter.remove(toRemove);
     }
 

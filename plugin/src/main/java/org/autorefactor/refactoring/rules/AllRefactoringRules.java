@@ -64,8 +64,8 @@ public final class AllRefactoringRules {
      */
     public static List<RefactoringRule> getAllRefactoringRules() {
         return newArrayList(
-                
-                new RemoveEmptyLinesRefactoring());
+                new RemoveEmptyLinesRefactoring(),
+                new CapitalizeCodeRefactoring());
     }
 
     private static List<RefactoringRule> newArrayList(RefactoringRule... refactorings) {
